@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Hoc from './Hoc';
 const ToDo=({data})=>{
     let renderTodos=data.slice(0,10).map((todo)=>{

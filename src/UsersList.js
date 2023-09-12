@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Hoc from './Hoc';
 const UsersList=({data})=>{
     let renderUser=data.map((user)=>{
@@ -13,7 +13,6 @@ const UsersList=({data})=>{
    // console.log(renderUser);
    return (
     <>
-    <h1></h1>
     <div> {renderUser}</div>
     </>
   )

@@ -15,20 +15,32 @@ const Hoc=(WrappedComponent,entity)=>{
       }
     render(){
       let {data,term}=this.state;
-      let filterData=data.slice(0,10).filter((d)=>{    
+      let filterData=data.filter((d)=>{    
         if(entity==="users"){
           const {name}=d;
-           return name.indexOf(term)>=0
+           return (
+            <>
+            <div key={d.id}>
+            {name.indexOf(term)>=0}
+            </div>
+            </>
+           )
         }
         if(entity==="todos"){
           const {title}=d;
-          return title.indexOf(term)>=0;
+          return (
+            <>
+              <div key={d.userId}>
+                {title.indexOf(term)>=0}
+              </div>
+            </>
+          )
         }
       })
       return(
         <>
+        <div>
           <h1>{entity}</h1>
-          <div>
           <input type='text' value={term} onChange={(e)=>{this.setState({...this.state ,term:e.target.value})}}/>
           <WrappedComponent data={filterData}></WrappedComponent>
           </div>
