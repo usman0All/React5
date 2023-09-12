@@ -15,27 +15,15 @@ const Hoc=(WrappedComponent,entity)=>{
       }
     render(){
       let {data,term}=this.state;
-      let filterData=data.filter((d)=>{    
+      let filterData=data.slice(0,10).filter((d)=>{  
+        let{name,title}=d
         if(entity==="users"){
-          const {name}=d;
-           return (
-            <>
-            <div key={d.id}>
-            {name.indexOf(term)>=0}
-            </div>
-            </>
-           )
-        }
+           return name.indexOf(term)>=0
+          }
         if(entity==="todos"){
-          const {title}=d;
-          return (
-            <>
-              <div key={d.userId}>
-                {title.indexOf(term)>=0}
-              </div>
-            </>
-          )
+          return title.indexOf(term)>=0
         }
+        return ""
       })
       return(
         <>
