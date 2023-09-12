@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 const Hoc=(WrappedComponent,entity)=>{
   return class extends Component{
     state={
@@ -19,7 +18,7 @@ const Hoc=(WrappedComponent,entity)=>{
       let filterData=data.slice(0,10).filter((d)=>{    
         if(entity==="users"){
           const {name}=d;
-          return name.indexOf(term)>=0;
+           return name.indexOf(term)>=0
         }
         if(entity==="todos"){
           const {title}=d;
@@ -29,7 +28,8 @@ const Hoc=(WrappedComponent,entity)=>{
       return(
         <>
           <h1>{entity}</h1>
-          <div><input type='text' value={term} onChange={(e)=>{this.setState({...this.state ,term:e.target.value})}}/>
+          <div>
+          <input type='text' value={term} onChange={(e)=>{this.setState({...this.state ,term:e.target.value})}}/>
           <WrappedComponent data={filterData}></WrappedComponent>
           </div>
         </>
